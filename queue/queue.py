@@ -4,8 +4,7 @@ return elements in First In First Out order.
 
 1. Implement the Queue class using an array as the underlying storage structure.
    Make sure the Queue tests pass.
-2. Re-implement the Queue class, this time using the linked list implementation
-   as the underlying storage structure.
+2. Re-implement the Queue class, this time using the linked list implementation as the underlying storage structure.
    Make sure the Queue tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Queue?
@@ -16,13 +15,26 @@ Stretch: What if you could only use instances of your Stack class to implement t
 class Queue:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = []
     
     def __len__(self):
-        pass
+        return self.size
 
     def enqueue(self, value):
-        pass
+        self.size += 1
+        self.storage.append(value)
 
     def dequeue(self):
-        pass
+        if len(self.storage) == 0:
+            return None
+        self.size -= 1
+        node = self.storage.pop(0)
+        return node
+
+new_queue = Queue()
+print(len(new_queue))
+new_queue.enqueue(2)
+new_queue.enqueue(4)
+new_queue.enqueue(6)
+print(len(new_queue))
+print(new_queue.storage)
