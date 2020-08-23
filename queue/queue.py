@@ -21,20 +21,25 @@ class Queue:
         return self.size
 
     def enqueue(self, value):
-        self.size += 1
-        self.storage.append(value)
+       self.size += 1
+       self.storage.append(value)
 
     def dequeue(self):
+        # check if storage is empty and return None
         if len(self.storage) == 0:
             return None
+        # decrement size by 1 (being removed)
         self.size -= 1
-        node = self.storage.pop(0)
-        return node
+        num = self.storage.pop(0)
+        return num
 
 new_queue = Queue()
 print(len(new_queue))
+
 new_queue.enqueue(2)
 new_queue.enqueue(4)
 new_queue.enqueue(6)
-print(len(new_queue))
+print(new_queue.storage)
+
+new_queue.dequeue()
 print(new_queue.storage)
