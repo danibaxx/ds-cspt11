@@ -17,15 +17,68 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
-
+        # if single value
+        # a) compare target value to node.value
+        #b) if target > node.value:
+        #   - go right depending on size
+        #   - if node.right is None:
+        #       - create/insert new node
+        #   else:
+        #       compare: go left or right
+        #       - insert target into node.left
+        # else: if target < node.value
+        #   - go left depending on size
+        #   - if node.left is None:
+        #       - create/insert new node
+        if value > self.value:
+            if self.right is None:
+                new_node = BSTNode(value)
+                self.right = new_node
+            else:
+                self.right.insert(value)
+        if value < self.value:
+            if self.left is None:
+                new_node = BSTNode(value)
+                self.right = new_node
+            else:
+                new_node = self.left
+                self.left.insert(value)
+            
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # empty: check root node for value
+        # if none return False
+        if self.value == target:
+            return True
+        found = False
+
+        # traversal:
+        # if self.value >= target:
+        if self.value >= target:
+        # check left
+        # if left is None:
+            # return False
+        # found = self.left.contains(target)
+            if self.left is None:
+                return False
+            found = self.left.contains(target)
+
+        # if self.value < target:
+        if self.value < target:
+        # check right-> if None:
+            if self.right is None:
+                # return False
+                return False
+            # found = self.right.contains(target)
+
+            found = self.right.contains(target)
+
+        # return found -> globally?
+        return found
 
     # Return the maximum value found in the tree
-    def get_max(self):
+    def get_max(self):      
         pass
 
     # Call the function `fn` on the value of each node
@@ -73,13 +126,13 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-bst.bft_print()
-bst.dft_print()
+# bst.bft_print()
+# bst.dft_print()
 
-print("elegant methods")
-print("pre order")
-bst.pre_order_dft()
-print("in order")
-bst.in_order_dft()
-print("post order")
-bst.post_order_dft()  
+# print("elegant methods")
+# print("pre order")
+# bst.pre_order_dft()
+# print("in order")
+# # bst.in_order_dft()
+# print("post order")
+# bst.post_order_dft()  
